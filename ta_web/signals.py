@@ -4,6 +4,9 @@ from django.dispatch import receiver
 
 import django.core.exceptions
 
+# It should be noted that this information (user account extension)
+# was gleaned from <simpleisbetterthancomplex.com>
+
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
     if created:
