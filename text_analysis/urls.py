@@ -17,6 +17,18 @@ from django.conf.urls import include, url
 from django.contrib import admin
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-    url(r'', include('ta_web.urls')),
+#####################################
+# ADMIN CONSOLE
+#####################################
+    url(
+        r'^admin/',
+        admin.site.urls
+    ),
+#####################################
+# ta_web
+#####################################
+    url(
+        r'',
+        include('ta_web.urls')
+    ),
 ]
