@@ -3,6 +3,7 @@
 <html lang="en">
 
 <head>
+
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Text Analysis Advanced</title>
@@ -12,19 +13,32 @@
 
   <!--- STATIC FILES --->
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <script src="{% static 'javascript/scripts.js' %}"></script>
+
 </head>
 
 <body>
+
   <div class="container">
+
     <div class="row">
+
       <div class="col-sm-12">
+
         <h1>Text Analysis Advanced</h1>
+
       </div>
+
     </div>
+
     <div class="row">
+
       {% block content %} {% endblock %}
+
     </div>
+
   </div>
+
 </body>
 
 </html>
