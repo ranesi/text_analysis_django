@@ -4,9 +4,17 @@ from . import views
 urlpatterns = [
 
     url(
-        r'^$',
+        r'',
         views.homepage,
         name='homepage'
+    ),
+
+    # Document URLs
+
+    url(
+        r'^document/(?P<pk>\d+)/$',
+        views.document_detail,
+        name='document_detail'
     ),
 
 ]
