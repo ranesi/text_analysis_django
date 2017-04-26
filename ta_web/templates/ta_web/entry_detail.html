@@ -1,0 +1,12 @@
+{% extends 'ta_web/entry_detail.html' %}
+{% block content %}
+  <div class="document">
+    {% if document.date_submitted %}
+      <div class="date">
+        {{ document.date_submitted }}
+      </div>
+    {% endif %}
+    <h3>{{ document.title }}</h3>
+    <b>TODO: ALL THIS</b>
+  </div>
+{% endblock %}

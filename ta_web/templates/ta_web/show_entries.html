@@ -1,0 +1,24 @@
+{% extends 'ta_web/base.html' %}
+{% block content %}
+{% for doc in documents %}
+<div class="documents">
+  <div class="date">
+    {{ doc.date_submitted }}
+  </div>
+  <h3><a href="{% url 'post_detail' pk=doc.pk %}">{{ doc.title }}</a></h3>
+  <pre>
+        Sentences.......{{ doc.sentences }}
+        Words...........{{ doc.words }}
+        Syllables.......{{ doc.syllables }}
+        Polysyllables...{{ doc.polysyllables }}
+      </pre>
+  <h3>Indices</h3>
+  <pre>
+        Readability.....{{ doc.readability_index }}
+        Grade Level.....{{ doc.fk_grade_level }}
+        ARI.............{{ doc.ari }}
+        {% else %}
+        <p>No documents yet submitted!</p>
+        {% endfor %}
+</div>
+{% endblock %}

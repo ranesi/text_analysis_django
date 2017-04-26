@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 import datetime
+import .calc
+import .eq
 
 User._meta.get_field('email')._blank = False # TODO email validator
 
@@ -30,8 +32,19 @@ class Document(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def submit(self):
+        """
+            Process submitted text.
+        """
         self.date_submitted = timezone.now()
-        #TODO issue 2
+
+        self.sentences, self.words, self.syllables, \
+        self.characters, self.poly_syllables = calc.analyze_string(self.text)
+
+        self.readability_index = eq.fk_re(self.words, self.sentences, self.syllables)
+        self.fk_grade_level = eq.fk_gl(self.words, self.sentences, self.syllables)
+        self.ari = eq.ari(self.words, self.sentences, self.characters)
+        self.smog = eq.smog(self.poly_syllables)
+
 
     def __str__(self):
         return '{}, {}'.format(self.title, self.date_submitted)
