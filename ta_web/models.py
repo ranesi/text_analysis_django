@@ -1,8 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 import datetime
-from .calc import *
-from .eq import *
+from . import eq
+from .calc import analyze_string
 
 User._meta.get_field('email')._blank = False  # TODO email validator
 
@@ -42,7 +42,7 @@ class Document(models.Model):
         self.date_submitted = timezone.now()
 
         self.sentences, self.words, self.syllables, \
-            self.characters, self.poly_syllables = calc.analyze_string(
+            self.characters, self.poly_syllables = analyze_string(
                 self.text)
 
         self.readability_index = eq.fk_re(

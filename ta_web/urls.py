@@ -23,4 +23,10 @@ urlpatterns = [
         name='entry_detail'
     ),
 
+    url(
+        r'^document/add$',
+        views.add_document,
+        name='add_document'
+    ),
+
 ]
