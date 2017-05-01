@@ -12,9 +12,15 @@ urlpatterns = [
     # Document URLs
 
     url(
+        r'^document/all$',
+        views.show_entries,
+        name='show_entries'
+    ),
+
+    url(
         r'^document/(?P<pk>\d+)/$',
-        views.document_detail,
-        name='document_detail'
+        views.entry_detail,
+        name='entry_detail'
     ),
 
 ]
