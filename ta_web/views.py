@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import Http404
 from .models import Document
+from .views import CreateUserForm
 
 def homepage(request):
     # temporary
@@ -22,3 +23,17 @@ def entry_detail(request, pk):
 
 def add_document(request):
     pass
+
+def register_user(request):
+    if request.method == 'POST':
+        form = CreateUserForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            user = authenticate(
+                username=request.POST['username'],
+                password=request.POST['password2']
+            )
+            login(request, user)
+            return redirect('ta_web:homepage')
+        else:
+            return render(request, '')

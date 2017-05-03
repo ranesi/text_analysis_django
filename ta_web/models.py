@@ -12,7 +12,7 @@ class Profile(models.Model):
     user = models.OneToOneField(
         User, on_delete=models.CASCADE, related_name='profile')
     signup_date = models.DateTimeField()
-    description = models.CharField(max_length=200, null=True)
+    description = models.CharField(max_length=200, blank=True, null=True)
     website_url = models.CharField(
         max_length=200, null=True)  # TODO url validator
 
