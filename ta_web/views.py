@@ -1,17 +1,19 @@
 from django.shortcuts import render, get_object_or_404, redirect
+from django.contrib.auth.decorators import login_required
 from django.http import Http404
 from .models import Document
 from .forms import CreateUserForm
 
 def homepage(request):
-    # temporary
-    documents = Document.objects.all()
-    return render(request, 'ta_web/show_entries.html', {'documents': documents})
+    return render(request, 'ta_web/home.html')
 
+@login_required
 def show_entries(request):
+    # TODO filter by logged in user
     documents = Document.objects.all()
     return render(request, 'ta_web/show_entries.html', {'documents': documents})
 
+@login_required
 def entry_detail(request, pk):
     # try:
     #     document = Document.objects.get(pk=pk)
@@ -31,7 +33,7 @@ def register(request):
             user = form.save()
             user = authenticate(
                 username=request.POST['username'],
-                password=request.POST['password2']
+                password=request.POST['password1']
             )
             login(request, user)
             return redirect('ta_web:homepage')

@@ -4,7 +4,7 @@ from . import views
 urlpatterns = [
 
     url(
-        r'^$',
+        r'',
         views.homepage,
         name='homepage'
     ),
@@ -18,7 +18,7 @@ urlpatterns = [
     ),
 
     url(
-        r'^document/(?P<pk>\d+)/$',
+        r'^document/(?P<pk>\d+)$',
         views.entry_detail,
         name='entry_detail'
     ),

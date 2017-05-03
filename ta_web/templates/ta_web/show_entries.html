@@ -5,7 +5,7 @@
   <div class="date">
     {{ doc.date_submitted }}
   </div>
-  <h3><a href="{% url 'entry_detail' pk=doc.pk %}">{{ doc.title }}</a></h3>
+  <h3><a href="{% url 'ta_web:entry_detail' pk=doc.pk %}">{{ doc.title }}</a></h3>
       <pre>
         Sentences.......{{ doc.sentences }}
         Words...........{{ doc.words }}

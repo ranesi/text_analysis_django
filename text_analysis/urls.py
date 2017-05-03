@@ -20,33 +20,43 @@ from django.views.generic.edit import CreateView
 from django.contrib.auth.forms import UserCreationForm
 from django.conf import settings
 from django.conf.urls.static import static
+from ta_web import views
 
 urlpatterns = [
-#####################################
-# ADMIN CONSOLE
-#####################################
+    #####################################
+    # ADMIN CONSOLE
+    #####################################
     url(
         r'^admin/',
         admin.site.urls
     ),
-#####################################
-# ta_web
-#####################################
+    #####################################
+    # ta_web
+    #####################################
     # route to ta_web
     url(
         r'^',
-        include('ta_web.urls')
+        include(
+            'ta_web.urls',
+            namespace='ta_web'
+        )
     ),
     # login
     url(
         r'^accounts/login/$',
         auth_views.login,
         name='login'
-        ),
+    ),
     # logout
     url(
         r'^accounts/logout/$',
         auth_views.logout,
         name='logout'
+    ),
+    # register
+    url(
+        r'^register/$',
+        views.register,
+        name='register'
     ),
 ]
