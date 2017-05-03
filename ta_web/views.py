@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import Http404
 from .models import Document
-from .views import CreateUserForm
+from .forms import CreateUserForm
 
 def homepage(request):
     # temporary
