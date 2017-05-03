@@ -1,5 +1,5 @@
 from django import forms
-from .models import Document
+from .models import Document, Profile
 
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
@@ -114,3 +114,11 @@ class CreateUserForm(UserCreationForm):
             user.save()
 
         return user
+
+
+class UserProfileForm(forms.ModelForm):
+
+    class Meta:
+        model = Profile
+        fields = ['description', 'website_url']
+

@@ -2,8 +2,8 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 from django.http import Http404
-from .models import Document
-from .forms import CreateUserForm
+from .models import Document, Profile
+from .forms import CreateUserForm, AddDocumentForm
 
 def homepage(request):
     return render(request, 'ta_web/home.html')
@@ -25,7 +25,19 @@ def entry_detail(request, pk):
     return render(request, 'ta_web/entry_detail.html', {'document': document})
 
 def add_document(request):
-    pass
+    if request.method == 'POST':
+        form = AddDocumentForm(request.POST)
+        if form.is_valid():
+            document = form.save(commit=False)
+            if document.title and document.text:
+                document.user = request.user
+                document.submit()
+                document.save()
+                return redirect('ta_web:entry_detail', pk=document.pk)
+    else:
+        form = AddDocumentForm()
+    return render(request, 'ta_web/add_document.html', {'form': form})
+
 
 def register(request):
     if request.method == 'POST':

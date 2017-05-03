@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
-import datetime
+from django.utils import timezone
+# import datetime
 from . import eq
 from .calc import analyze_string
 
@@ -39,7 +40,8 @@ class Document(models.Model):
         """
             Process submitted text.
         """
-        self.date_submitted = timezone.now()
+        self.date_submitted = timezone.now() # django utils
+        # self.date_submitted = datetime.datetime.now()
 
         self.sentences, self.words, self.syllables, \
             self.characters, self.poly_syllables = analyze_string(
