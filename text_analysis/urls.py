@@ -16,10 +16,6 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
-from django.views.generic.edit import CreateView
-from django.contrib.auth.forms import UserCreationForm
-from django.conf import settings
-from django.conf.urls.static import static
 from ta_web import views
 
 urlpatterns = [

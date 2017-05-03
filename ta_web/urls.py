@@ -4,7 +4,7 @@ from . import views
 urlpatterns = [
 
     url(
-        r'',
+        r'^$',
         views.homepage,
         name='homepage'
     ),
@@ -36,7 +36,7 @@ urlpatterns = [
     ),
 
     url(
-        r'^logout/$',
+        r'^logout_message/$',
         views.logout_message,
         name='logout_message'
     ),
