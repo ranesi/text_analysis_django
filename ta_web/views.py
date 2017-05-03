@@ -24,7 +24,7 @@ def entry_detail(request, pk):
 def add_document(request):
     pass
 
-def register_user(request):
+def register(request):
     if request.method == 'POST':
         form = CreateUserForm(request.POST)
         if form.is_valid():
@@ -36,4 +36,10 @@ def register_user(request):
             login(request, user)
             return redirect('ta_web:homepage')
         else:
-            return render(request, '')
+            return render(request, 'registration/register.html', {'form': form})
+    else:
+        form = CreateUserForm()
+        return render(request, 'registration/register.html', {'form': form})
+
+def logout_message(request):
+    return render(request, 'ta_web/logout_message.html')
