@@ -17,6 +17,10 @@ class AddDocumentForm(forms.ModelForm):
         model = Document
         fields = ('title', 'text',)
 
+    ########################################
+    # The following MAY be used eventually
+    # ... figured that they should be included
+    #
     def clean_title(self):
 
         title = self.cleaned_data['title']
@@ -46,6 +50,8 @@ class AddDocumentForm(forms.ModelForm):
             document.save()
 
         return document()
+    #
+    ########################################
 
 
 class CreateUserForm(UserCreationForm):
@@ -117,6 +123,8 @@ class CreateUserForm(UserCreationForm):
 
 
 class UserProfileForm(forms.ModelForm):
+
+    """...included in case social functionality will be included (eventually)"""
 
     class Meta:
         model = Profile

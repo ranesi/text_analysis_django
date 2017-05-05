@@ -1,5 +1,15 @@
-# text_analysis_django  
-readme description forthcoming  
+Text Analysis Advanced
+=======
+
+Setup:  
+1. make your virtualenv (python 3.x)
+2. `pip install -r requirements.txt`
+3. after installing requirements, do the following in the python interpreter:  
+
+`>> import nltk`  
+`>> nltk.download()`  
+*Should display the nltk menu*  
+`Downloader> d`  
+`Identifier> cmudict`  
   
-required packages listed within requirements.txt
-![alt tag](https://cloud.githubusercontent.com/assets/18690168/25300819/9e6b8556-26dd-11e7-95cd-64833aa0cbfa.png)
+That is it! Enjoy!?
