@@ -23,18 +23,18 @@ class Profile(models.Model):
 
 class Document(models.Model):
     title = models.CharField(max_length=200)
-    date_submitted = models.DateTimeField()
-    text = models.TextField()
-    sentences = models.IntegerField()
-    words = models.IntegerField()
-    syllables = models.IntegerField()
-    characters = models.IntegerField()
-    polysyllables = models.IntegerField()
-    readability_index = models.FloatField()
-    fk_grade_level = models.FloatField()
-    ari = models.FloatField()
-    smog = models.FloatField()
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    date_submitted = models.DateTimeField(blank=True, null=True)
+    text = models.TextField(blank=True, null=True)
+    sentences = models.IntegerField(blank=True, null=True)
+    words = models.IntegerField(blank=True, null=True)
+    syllables = models.IntegerField(blank=True, null=True)
+    characters = models.IntegerField(blank=True, null=True)
+    polysyllables = models.IntegerField(blank=True, null=True)
+    readability_index = models.FloatField(blank=True, null=True)
+    fk_grade_level = models.FloatField(blank=True, null=True)
+    ari = models.FloatField(blank=True, null=True)
+    smog = models.FloatField(blank=True, null=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
 
     def submit(self):
         """

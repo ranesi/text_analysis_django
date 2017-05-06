@@ -24,7 +24,7 @@ urlpatterns = [
     ),
 
     url(
-        r'^document/add$',
+        r'^document/add/$',
         views.add_document,
         name='add_document'
     ),

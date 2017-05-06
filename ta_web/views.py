@@ -12,22 +12,27 @@ def homepage(request):
 
 @login_required
 def show_entries(request):
-    # TODO filter by logged in user
-    documents = Document.objects.all().filter_by(
+
+    documents = Document.objects.all().filter(
         user=request.user
-    ).order_by('date_submitted')
-    return render(request, 'ta_web/show_entries.html', {'documents': documents})
+    ).order_by(
+        'date_submitted'
+    )
+
+    return render(request, 'ta_web/show_documents.html', {'documents': documents})
 
 
 @login_required
 def entry_detail(request, pk):
+
     # try:
     #     document = Document.objects.get(pk=pk)
     # except Document.DoesNotExist:
-    #     document = None
     #     raise Http404('Document DOES NOT EXIST')
+
     document = get_object_or_404(Document, pk=pk)
-    return render(request, 'ta_web/entry_detail.html', {'document': document})
+
+    return render(request, 'ta_web/document_detail.html', {'document': document})
 
 
 def add_document(request):
@@ -46,7 +51,7 @@ def add_document(request):
             doc.submit()
             doc.save()
 
-            return redirect(request, 'ta_web:entry_detail', pk=doc.pk)
+            return redirect('ta_web:entry_detail', pk=doc.pk)
 
     else:
 
@@ -54,6 +59,15 @@ def add_document(request):
 
     return render(request, 'ta_web/add_document.html', {'form': form})
 
+
+##################################################################
+#
+# User views...
+#
+# - user registration
+# - logout redirect
+#
+##################################################################
 
 def register(request):
 

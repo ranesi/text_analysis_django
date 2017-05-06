@@ -17,41 +17,41 @@ class AddDocumentForm(forms.ModelForm):
         model = Document
         fields = ('title', 'text',)
 
-    ########################################
-    # The following MAY be used eventually
-    # ... figured that they should be included
+    # ########################################
+    # # The following MAY be used eventually
+    # # ... figured that they should be included
+    # #
+    # def clean_title(self):
     #
-    def clean_title(self):
-
-        title = self.cleaned_data['title']
-
-        if not title:
-            ValidationError(BLANK_FIELD)
-
-        return title
-
-    def clean_text(self):
-
-        text = self.cleaned_data['text']
-
-        if not text:
-            ValidationError(BLANK_FIELD)
-
-        return text
-
-    def save(self, commit=True):
-
-        document = super(AddDocumentForm, self).save(commit=False)
-        document.title = self.cleaned_data['title']
-        document.text = self.cleaned_data['text']
-
-        if commit:
-            # document.submit()
-            document.save()
-
-        return document()
+    #     title = self.cleaned_data['title']
     #
-    ########################################
+    #     if not title:
+    #         ValidationError(BLANK_FIELD)
+    #
+    #     return title
+    #
+    # def clean_text(self):
+    #
+    #     text = self.cleaned_data['text']
+    #
+    #     if not text:
+    #         ValidationError(BLANK_FIELD)
+    #
+    #     return text
+    #
+    # def save(self, commit=True):
+    #
+    #     document = super(AddDocumentForm, self).save(commit=False)
+    #     document.title = self.cleaned_data['title']
+    #     document.text = self.cleaned_data['text']
+    #
+    #     if commit:
+    #         # document.submit()
+    #         document.save()
+    #
+    #     return document()
+    # #
+    # ########################################
 
 
 class CreateUserForm(UserCreationForm):

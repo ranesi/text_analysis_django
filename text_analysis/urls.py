@@ -39,7 +39,7 @@ urlpatterns = [
     ),
     # login
     url(
-        r'^accounts/login/$',
+        r'^accounts/login/',
         auth_views.login,
         name='login'
     ),
